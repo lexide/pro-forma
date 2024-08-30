@@ -1,0 +1,41 @@
+{
+    "name": "lexide/pro-forma",
+    "description": "A library for managing and installing templated files for auto-generated code",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Danny Smart",
+            "email": "downsider84@hotmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=8.0",
+        "lexide/puzzle-di": "dev-add-class-support as v2.3.0",
+        "composer-plugin-api": "^2.0"
+    },
+    "require-dev": {
+        "composer/composer": "^2.0",
+        "phpunit/phpunit": "^9.6.0",
+        "mockery/mockery": "^1.6.0",
+        "mikey179/vfsstream": "^1.6.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Lexide\\ProForma\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Lexide\\ProForma\\Test\\": "test/"
+        }
+    },
+    "extra": {
+        "class": "Lexide\\ProForma\\Composer\\ProFormaPlugin"
+    },
+    "config": {
+        "allow-plugins": {
+            "lexide/puzzle-di": false
+        }
+    }
+}
