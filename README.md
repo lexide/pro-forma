@@ -50,8 +50,6 @@ Pro Forma uses `lexide/puzzle-di` to collect a list of `TemplateProviderInterfac
 
 ### Composer configuration
 
-
-
 Each library can register a single template provider, that implements the 
 `Lexide\ProForm\Template\TemplateProviderInterface` interface, by adding the following configuration to the library's
 `composer.json` file:
