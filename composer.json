@@ -1,7 +1,7 @@
 {
     "name": "lexide/pro-forma",
     "description": "A library for managing and installing templated files for auto-generated code",
-    "type": "library",
+    "type": "composer-plugin",
     "license": "MIT",
     "authors": [
         {
