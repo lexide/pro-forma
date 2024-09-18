@@ -34,12 +34,12 @@ class TemplateProcessor
             if (!$this->canOverwrite) {
                 return;
             }
-            $this->io->write("<info>lexide/pro-forma</info> <comment>is overwriting</comment> <info>$outputPath</info>");
+            $this->io->write("<comment>lexide/pro-forma</comment> <info>is overwriting</info> <comment>$outputPath</comment>");
         }
 
         $templatePath = $packageInstallPath . DIRECTORY_SEPARATOR . $template->getTemplatePath();
         if (!file_exists($templatePath)) {
-            $this->io->write("<info>lexide/pro-forma</info> <comment>could not find the template file</comment> <info>$templatePath</info>");
+            $this->io->write("<comment>lexide/pro-forma</comment> <info>could not find the template file</info> <comment>$templatePath</comment>");
             return;
         }
 
@@ -55,16 +55,16 @@ class TemplateProcessor
 
             if (!is_dir($dirPath)) {
                 if (!mkdir($dirPath, 0664, true)) {
-                    $this->io->write("<info>info/pro-forma</info> <comment>could not create the directory</comment> <info>$dirPath</info>");
+                    $this->io->write("<comment>info/pro-forma</comment> <info>could not create the directory</info> <comment>$dirPath</comment>");
                     return;
                 }
             }
         }
 
         if (file_put_contents($outputPath, $templateContent)) {
-            $this->io->write("<info>lexide/pro-forma</info> <comment>created the file</comment> <info>$outputPath</info>");
+            $this->io->write("<comment>lexide/pro-forma</comment> <info>created the file</info> <comment>$outputPath</comment>");
         } else {
-            $this->io->write("<info>lexide/pro-forma</info> <comment>could not create the file</comment> <info>$outputPath</info>");
+            $this->io->write("<comment>lexide/pro-forma</comment> <info>could not create the file</info> <comment>$outputPath</comment>");
         }
     }
 

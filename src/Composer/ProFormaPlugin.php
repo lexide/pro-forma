@@ -50,7 +50,7 @@ class ProFormaPlugin implements PluginInterface, EventSubscriberInterface
      */
     public function uninstall(Composer $composer, IOInterface $io): void
     {
-        $io->write("<info>lexide/pro-forma</info> WILL NOT <comment>remove auto-generated files. This must be done manually.</comment>");
+        $io->write("<comment>lexide/pro-forma</comment> WILL NOT <info>remove auto-generated files. This must be done manually.</info>");
     }
 
     /**
@@ -64,23 +64,23 @@ class ProFormaPlugin implements PluginInterface, EventSubscriberInterface
         $io = $handler->getIo();
 
         if (!$handler->hasPackage("lexide/puzzle-di")) {
-            $io->write("<info>lexide/pro-forma</info> <comment>requires</comment> <info>lexide/puzzle-di</info> <comment>to operate. Aborting generation.</comment>");
+            $io->write("<comment>lexide/pro-forma</comment> <info>requires</info> <comment>lexide/puzzle-di</comment> <info>to operate. Aborting generation.</info>");
             return;
         }
         try {
             $puzzleClassName = $handler->getProjectNamespace() . "PuzzleConfig";
         } catch (InstallationException) {
             $io->write(
-                "<info>lexide/pro-form</info> <comment>could not determine the project namespace. " .
-                "Please ensure the project uses PSR-0 or PSR-4 autoloading.</comment>"
+                "<comment>lexide/pro-form</comment> <info>could not determine the project namespace. " .
+                "Please ensure the project uses PSR-0 or PSR-4 autoloading.</info>"
             );
             return;
         }
 
         if (!class_exists($puzzleClassName)) {
             $io->write(
-                "<info>lexide/pro-forma</info> <comment>could not find the class</comment> <info$puzzleClassName</info>" .
-                "<comment>. Did</comment> <info>lexide/puzzle-di</info> <comment>install correctly?</comment>"
+                "<comment>lexide/pro-forma</comment> <info>could not find the class</info> <comment>$puzzleClassName</comment>" .
+                "<info>. Did</info> <comment>lexide/puzzle-di</comment> <info>install correctly?</info>"
             );
             return;
         }
@@ -90,7 +90,7 @@ class ProFormaPlugin implements PluginInterface, EventSubscriberInterface
 
         $templateProviders = call_user_func([$puzzleClassName, "getConfigItems"], "lexide/pro-forma");
         if (empty($templateProviders)) {
-            $io->write("<info>lexide/pro-forma</info> <comment>did not find any installed (and whitelisted) libraries that provide templates.</comment>");
+            $io->write("<comment>lexide/pro-forma</comment> <info>did not find any installed (and whitelisted) libraries that provide templates.</info>");
             return;
         }
 

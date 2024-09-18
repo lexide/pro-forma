@@ -35,19 +35,19 @@ class TemplateManager
         try {
             $projectConfig = $this->configFactory->createProjectConfig();
         } catch (InstallationException) {
-            $io->write("<info>lexide/pro-forma</info> <comment>could not determine the project namespace.</comment>");
+            $io->write("<comment>lexide/pro-forma</comment> <info>could not determine the project namespace.</info>");
             return;
         }
 
         foreach ($templateProviderClasses as $packageName => $templateProviderClass) {
             if (!class_exists($templateProviderClass)) {
-                $io->write("<info>lexide/pro-forma</info> <comment>could not find the template provider class </comment><info>$templateProviderClass.</info>");
+                $io->write("<comment>lexide/pro-forma</comment> <info>could not find the template provider class </info><comment>$templateProviderClass.</comment>");
                 continue;
             }
             if (!is_subclass_of($templateProviderClass, TemplateProviderInterface::class)) {
                 $io->write(
-                    "<info>lexide/pro-forma</info> <comment>could not use the template provider </comment><info>$templateProviderClass</info> " .
-                    "<comment>as it does not implement </comment><info>" . TemplateProviderInterface::class . ".</info>"
+                    "<comment>lexide/pro-forma</comment> <info>could not use the template provider </info><comment>$templateProviderClass</comment> " .
+                    "<info>as it does not implement </info><comment>" . TemplateProviderInterface::class . ".</comment>"
                 );
                 continue;
             }
@@ -60,8 +60,8 @@ class TemplateManager
             foreach ($templates as $template) {
                 if (!$template instanceof Template) {
                     $io->write(
-                        "<info>lexide/pro-forma</info> <comment>found invalid template configuration " .
-                        "from the provider </comment><info>$templateProviderClass.</info>"
+                        "<comment>lexide/pro-forma</comment> <info>found invalid template configuration " .
+                        "from the provider </info><comment>$templateProviderClass.</comment>"
                     );
                     continue 2;
                 }
