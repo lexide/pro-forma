@@ -148,6 +148,10 @@ the replacements, only use the key name, no braces are required:
 $template->setReplacements(["key" => "value"]);
 ```
 
+> IMPORTANT! For consistency, replacement values must always be strings; any value that is not a string will be ignored,
+> and a message will be outputted describing the value as invalid. This includes values that are "stringable" or that PHP 
+> would naturally convert to a string.
+
 ## Regenerating files
 
 On occasion, it may be necessary to regenerate files if a library has had an update that changes a template's behaviour.

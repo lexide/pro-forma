@@ -43,9 +43,18 @@ class TemplateProcessor
             return;
         }
 
+        $templateName = $template->getName();
+
         $templateContent = file_get_contents($templatePath);
         foreach ($template->getReplacements() as $name => $replacement) {
-            $templateContent = preg_replace("/{{ *$name *}}/u", $replacement, $templateContent);
+            if (is_string($replacement)) {
+                $templateContent = preg_replace("/{{ *$name *}}/u", $replacement, $templateContent);
+            } else {
+                $this->io->write(
+                    "<comment>lexide/pro-forma</comment> <info>found an invalid replacement value for</info> " .
+                    "<comment>$name</comment> <info>for the template</info> <comment>$templateName</comment>"
+                );
+            }
         }
 
         // ensure the output file's directory exists
@@ -53,11 +62,12 @@ class TemplateProcessor
             // remove the filename
             $dirPath = substr($outputPath, 0, strrpos($outputPath, DIRECTORY_SEPARATOR));
 
-            if (!is_dir($dirPath)) {
-                if (!mkdir($dirPath, 0664, true)) {
-                    $this->io->write("<comment>info/pro-forma</comment> <info>could not create the directory</info> <comment>$dirPath</comment>");
-                    return;
-                }
+            if (!is_dir($dirPath) && !mkdir($dirPath, 0664, true)) {
+                $this->io->write(
+                    "<comment>lexide/pro-forma</comment> <info>could not create the directory</info> <comment>$dirPath</comment> " .
+                    "<info>for the template</info> <comment>$templateName</comment>"
+                );
+                return;
             }
         }
 
