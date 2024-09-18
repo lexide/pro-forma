@@ -11,7 +11,7 @@
     ],
     "require": {
         "php": ">=8.0",
-        "lexide/puzzle-di": "dev-add-class-support as v2.3.0",
+        "lexide/puzzle-di": "~3.0.0",
         "composer-plugin-api": "^2.0"
     },
     "require-dev": {
