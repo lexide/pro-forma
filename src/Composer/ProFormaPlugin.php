@@ -15,7 +15,7 @@ use Lexide\ProForma\Template\TemplateManager;
 use Lexide\ProForma\Template\TemplateProcessor;
 use Lexide\ProForma\Template\TemplateProviderInterface;
 
-class ProFormPlugin implements PluginInterface, EventSubscriberInterface
+class ProFormaPlugin implements PluginInterface, EventSubscriberInterface
 {
     /**
      * {@inheritDoc}
