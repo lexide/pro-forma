@@ -33,6 +33,15 @@ class ProjectConfig
     }
 
     /**
+     * @param string $packageName
+     * @return bool
+     */
+    public function hasInstalledPackage(string $packageName): bool
+    {
+        return isset(array_flip($this->installedPackages)[$packageName]);
+    }
+
+    /**
      * @param array $installedPackages
      */
     public function setInstalledPackages(array $installedPackages): void
