@@ -29,6 +29,14 @@ class ComposerHandler
     }
 
     /**
+     * @return string
+     */
+    public function getProjectName(): string
+    {
+        return $this->event->getComposer()->getPackage()->getName();
+    }
+
+    /**
      * @return array
      */
     public function getProFormaExtra(): array

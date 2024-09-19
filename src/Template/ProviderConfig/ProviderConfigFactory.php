@@ -25,6 +25,7 @@ class ProviderConfigFactory
     public function createProjectConfig(): ProjectConfig
     {
         $config = new ProjectConfig();
+        $config->setName($this->handler->getProjectName());
         $config->setNamespace($this->handler->getProjectNamespace());
         $config->setInstalledPackages($this->handler->getInstalledPackageNames());
         return $config;
