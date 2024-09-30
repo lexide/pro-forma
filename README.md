@@ -121,6 +121,16 @@ In this example, the `LibraryConfig` instance would contain the value `bar` unde
 $value = $libraryConfig->getValue("foo");    // value is set to 'bar'
 ```
 
+### TemplateProvider Messages
+
+TemplateProviders have the ability to pass messages back to Pro Forma, in order to relay information to the user. This is
+useful when a provider has made a decision based on installed packages or config that ths user need to be informed about,
+such as skipping templates if a package is not installed or notifying about invalid configuration.
+
+The TemplateProvider is responsible for implementing the `getMessages()` method, which should return an array of strings
+representing the messages that need to be displayed. If a provider doesn't supply any messages, an empty array should be
+returned.
+
 ### Template class
 
 The template class, `Lexide\ProForma\Template\Template`, has four properties:
