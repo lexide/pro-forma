@@ -15,4 +15,9 @@ interface TemplateProviderInterface
      */
     public static function getTemplates(ProjectConfig $projectConfig, LibraryConfig $libraryConfig): array;
 
+    /**
+     * @return array
+     */
+    public static function getMessages(): array;
+
 }
