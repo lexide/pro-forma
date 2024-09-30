@@ -92,7 +92,7 @@ The purpose of a template provider is to return an array of instances of the `Le
 These instances need to contain all the information required to template the generated code.
 
 In order to customise which templated files are returned, the providers are passed two config objects; a 
-`Lexide\ProForm\Template\ProviderConfig\ProjectConfig` instance, which contains the project namespace and a list of 
+`Lexide\ProForm\Template\ProviderConfig\ProjectConfig` instance, which contains the project name, namespace and a list of 
 installed packages, and a `Lexide\ProForm\Template\ProviderConfig\LibraryConfig` instance, which contains configuration 
 for the current provider, taken from the project's `composer.json`. This allows the providers to make decisions such as 
 adding a particular template if a package is installed or setting the value of a replacement based on project config 
