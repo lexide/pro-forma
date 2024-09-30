@@ -59,7 +59,7 @@ class TemplateManager
             if (!empty($messages)) {
                 $io->write("<comment>lexide/pro-forma</comment> <info>was passed messages from the TemplateProvider for</info> <comment>$packageName</comment>");
                 foreach ($messages as $message) {
-                    $io->write("* $message");
+                    $io->write("</info>* $message");
                 }
             }
 
