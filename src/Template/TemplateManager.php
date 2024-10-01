@@ -54,6 +54,16 @@ class TemplateManager
 
             $libraryConfig = $this->configFactory->createLibraryConfig($packageName);
             $templates = call_user_func([$templateProviderClass, "getTemplates"], $projectConfig, $libraryConfig);
+            $messages = call_user_func([$templateProviderClass, "getMessages"], $projectConfig, $libraryConfig);
+
+            if (!empty($messages)) {
+                $io->write("<comment>lexide/pro-forma</comment> <info>was passed messages from the TemplateProvider for</info> <comment>$packageName</comment>");
+                foreach ($messages as $message) {
+                    if (is_string($message)) {
+                        $io->write("</info>* $message");
+                    }
+                }
+            }
 
             $packageInstallPath = $this->handler->getInstallPathByName($packageName);
 

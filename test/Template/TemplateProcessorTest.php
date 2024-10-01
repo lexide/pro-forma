@@ -27,6 +27,7 @@ class TemplateProcessorTest extends TestCase
         $this->io->shouldIgnoreMissing();
 
         $this->template = \Mockery::mock(Template::class);
+        $this->template->shouldReceive("getName")->andReturn("blah");
 
         vfsStreamWrapper::register();
         $this->testDir = new vfsStreamDirectory("test", 0777);

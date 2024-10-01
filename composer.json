@@ -11,7 +11,7 @@
     ],
     "require": {
         "php": ">=8.0",
-        "lexide/puzzle-di": "~3.0.0",
+        "lexide/puzzle-di": "~3.0.2",
         "composer-plugin-api": "^2.0"
     },
     "require-dev": {

@@ -92,7 +92,7 @@ The purpose of a template provider is to return an array of instances of the `Le
 These instances need to contain all the information required to template the generated code.
 
 In order to customise which templated files are returned, the providers are passed two config objects; a 
-`Lexide\ProForm\Template\ProviderConfig\ProjectConfig` instance, which contains the project namespace and a list of 
+`Lexide\ProForm\Template\ProviderConfig\ProjectConfig` instance, which contains the project name, namespace and a list of 
 installed packages, and a `Lexide\ProForm\Template\ProviderConfig\LibraryConfig` instance, which contains configuration 
 for the current provider, taken from the project's `composer.json`. This allows the providers to make decisions such as 
 adding a particular template if a package is installed or setting the value of a replacement based on project config 
@@ -120,6 +120,16 @@ In this example, the `LibraryConfig` instance would contain the value `bar` unde
 ```php
 $value = $libraryConfig->getValue("foo");    // value is set to 'bar'
 ```
+
+### TemplateProvider Messages
+
+TemplateProviders have the ability to pass messages back to Pro Forma, in order to relay information to the user. This is
+useful when a provider has made a decision based on installed packages or config that ths user need to be informed about,
+such as skipping templates if a package is not installed or notifying about invalid configuration.
+
+The TemplateProvider is responsible for implementing the `getMessages()` method, which should return an array of strings
+representing the messages that need to be displayed. If a provider doesn't supply any messages, an empty array should be
+returned.
 
 ### Template class
 

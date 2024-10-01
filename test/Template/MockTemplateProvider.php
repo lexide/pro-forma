@@ -21,6 +21,11 @@ class MockTemplateProvider implements TemplateProviderInterface
         self::$templatesSequence = $templatesSequence;
     }
 
+    public static function getMessages(): array
+    {
+        return [];
+    }
+
     /**
      * @return int
      */
